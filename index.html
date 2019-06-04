@@ -1,139 +1,50 @@
-<!DOCTYPE html>
-<head>
-	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<title>Hello, world!</title>
-	<!-- include three.js library -->
-	<script src='js/three.js'></script>
-	<!-- include jsartookit -->
-	<script src="jsartoolkit5/artoolkit.min.js"></script>
-	<script src="jsartoolkit5/artoolkit.api.js"></script>
-	<!-- include threex.artoolkit -->
-	<script src="threex/threex-artoolkitsource.js"></script>
-	<script src="threex/threex-artoolkitcontext.js"></script>
-	<script src="threex/threex-arbasecontrols.js"></script>
-	<script src="threex/threex-armarkercontrols.js"></script>
+<meta aframe-injected="" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=no,minimal-ui">
+<meta aframe-injected="" name="mobile-web-app-capable" content="yes">
+
+<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
 <script src="java.js"></script>
-</head>
 
-<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<div class="AR-tip">
+	<p>This is a AR-pen. Wait a moment to load and accept camera pop up. To see 3d models use <a style="white-space: nowrap" class="links" target="_blank" href="https://www.google.ru/search?q=hiro+marker&newwindow=1&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiV97CF6LnXAhUHpqQKHSfEBSAQ_AUICigB&biw=1676&bih=855&dpr=2">Hiro-marker</a></p>
+	<a class="gotit" href="#">Got it!</a>
+</div>
 
-<video id="video" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
-	<source src="video/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'>
-	<source src="video/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-</video>
+<div class="website-visit">
+	<p><a class="website-links"  href="https://www.chrislewiscasey.com/about">To learn more about me visit:&nbsp; chrislewiscasey.com</a></p>
+</div>
+
+
+<div class="btns-wrap">
+	<div class="btn rotate"></div>
+	<div class="btn scale"></div>
+	<div class="btn switch"onclick='window.location.href="https://www.chrislewiscasey.com"'>Website></div>
+</div>
+
+<a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' >
+	
+	<a-assets>
+		<a-asset-item id="london-obj" src="https://raw.githubusercontent.com/ChrisLCasey/AR-character-chill/master/Standing-chill.obj"></a-asset-item>
+		<a-asset-item id="london-mtl" src="https://raw.githubusercontent.com/ChrisLCasey/AR-character-chill/master/Standing-chill.mtl"></a-asset-item>
+	
+	</a-assets>
+
+	<a-marker type='pattern' patternUrl='https://www.chrislewiscasey.com/character-stance-code/pattern-marker.patt' id="aframe-scene">
 		
-<!-- 
-  Example created by Lee Stemkoski: https://github.com/stemkoski
-  Based on the AR.js library and examples created by Jerome Etienne: https://github.com/jeromeetienne/AR.js/
--->
-
-<script>
-var scene, camera, renderer, clock, deltaTime, totalTime;
-var arToolkitSource, arToolkitContext;
-var markerRoot1;
-var mesh1;
-initialize();
-animate();
-function initialize()
-{
-	scene = new THREE.Scene();
-	let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
-	scene.add( ambientLight );
-				
-	camera = new THREE.Camera();
-	scene.add(camera);
-	renderer = new THREE.WebGLRenderer({
-		antialias : true,
-		alpha: true
-	});
-	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-	renderer.setSize( 640, 480 );
-	renderer.domElement.style.position = 'absolute'
-	renderer.domElement.style.top = '0px'
-	renderer.domElement.style.left = '0px'
-	document.body.appendChild( renderer.domElement );
-	clock = new THREE.Clock();
-	deltaTime = 0;
-	totalTime = 0;
+		<a-entity light="type: hemisphere; color: #fefddd; groundColor: #fefddd; intensity: 1.2"></a-entity>
+		
+		<a-entity id="london" rotation="280 -90 90 -20" side="double" position="0.0 0.2 0.5" scale="0.009 0.009 0.009" obj-model="obj: #london-obj; mtl: #london-mtl">
+			<a-animation attribute="rotation" begin="rotate" end="endRotate" dur="20000" fill="forwards" to="-80 -90 90" repeat="indefinite" easing="linear">
+			</a-animation>
+		</a-entity>
+		
+		<a-entity id="kyiv" visible="false" rotation="0 -90 0" side="double" position="0.0 0.2 0" scale="0.01 0.01 0.01" obj-model="obj: #kyiv-obj; mtl: #kyiv-mtl">
+			<a-animation attribute="rotation" begin="rotate" end="endRotate" dur="26000" fill="forwards" to="0 270 0" repeat="indefinite" easing="linear">
+			</a-animation>
+		</a-entity>
+		
+	</a-marker>
 	
-	////////////////////////////////////////////////////////////
-	// setup arToolkitSource
-	////////////////////////////////////////////////////////////
-	arToolkitSource = new THREEx.ArToolkitSource({
-		sourceType : 'webcam',
-	});
-	function onResize()
-	{
-		arToolkitSource.onResize()	
-		arToolkitSource.copySizeTo(renderer.domElement)	
-		if ( arToolkitContext.arController !== null )
-		{
-			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)	
-		}	
-	}
-	arToolkitSource.init(function onReady(){
-		onResize()
-	});
+	<a-entity camera></a-entity>
 	
-	// handle resize event
-	window.addEventListener('resize', function(){
-		onResize()
-	});
-	
-	////////////////////////////////////////////////////////////
-	// setup arToolkitContext
-	////////////////////////////////////////////////////////////	
-	// create atToolkitContext
-	arToolkitContext = new THREEx.ArToolkitContext({
-		cameraParametersUrl: 'data/camera_para.dat',
-		detectionMode: 'mono'
-	});
-	
-	// copy projection matrix to camera when initialization complete
-	arToolkitContext.init( function onCompleted(){
-		camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
-	});
-	////////////////////////////////////////////////////////////
-	// setup markerRoots
-	////////////////////////////////////////////////////////////
-	// build markerControls
-	markerRoot1 = new THREE.Group();
-	scene.add(markerRoot1);
-	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-		type: 'pattern', patternUrl: "data/hiro.patt",
-	})
-	let geometry1 = new THREE.PlaneBufferGeometry(2,2, 4,4);
-	let video = document.getElementById( 'video' );
-	let texture = new THREE.VideoTexture( video );
-	texture.minFilter = THREE.LinearFilter;
-	texture.magFilter = THREE.LinearFilter;
-	texture.format = THREE.RGBFormat;
-	let material1 = new THREE.MeshBasicMaterial( { map: texture } );
-	
-	mesh1 = new THREE.Mesh( geometry1, material1 );
-	mesh1.rotation.x = -Math.PI/2;
-	
-	markerRoot1.add( mesh1 );
-}
-function update()
-{
-	// update artoolkit on every frame
-	if ( arToolkitSource.ready !== false )
-		arToolkitContext.update( arToolkitSource.domElement );
-}
-function render()
-{
-	renderer.render( scene, camera );
-}
-function animate()
-{
-	requestAnimationFrame(animate);
-	deltaTime = clock.getDelta();
-	totalTime += deltaTime;
-	update();
-	render();
-}
-</script>
-
-</body>
-</html>
+</a-scene>
