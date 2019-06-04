@@ -1,143 +1,18 @@
-<head>
 <meta aframe-injected="" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=no,minimal-ui">
 <meta aframe-injected="" name="mobile-web-app-capable" content="yes">
 
+
 <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
-<script src="Java.js"></script>
-<style>
- 
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,500,900')
-
-body
-	margin 0px
-	overflow hidden
-	font-family 'Roboto', sans-serif
-
-.btns-wrap
-	font-family 'Roboto', sans-serif
-	bottom 20px
-	left 20px
-	position absolute
-	display flex
-	flex-direction row
-	z-index 9998
-	
-.btn
-	user-select none
-	cursor pointer
-	box-sizing border-box
-	margin 18px
-	border-radius 1000px
-	width 60px
-	height 60px
-	background #f45
-	display inline-block
-	text-align center
-	padding 17px 20px
-	transition all 0.2s
-	
-.rotate
-	background-color #0078ff
-	background-image url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_3d_rotation_white_24px.svg)
-	background-size 60%
-	background-repeat no-repeat
-	background-position center
-	&_fade
-		opacity 0.4
-		background-color #323965
-	
-.scale
-	background-color #39F3F6
-	background-image url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_zoom_in_white_24px.svg)
-	background-size 60%
-	background-repeat no-repeat
-	background-position center
-	transform scale(1)
-	&_one
-		transform scale(1.2)
-		background-size 70%
-	&_two
-		transform scale(1.4)
-		background-size 80%
-	
-.switch
-	background-color #687C88
-	width auto
-	font-weight 900
-	font-size 20px
-	color #ffff
-	
-.AR-tip
-	z-index 9999
-	// box-sizing border-box
-	padding 30px 50px 60px
-	min-width 300px
-	max-width 400px
-	display block
-	background rgba(0,0,0,0.7)
-	position absolute
-	transform translate(-50%,-50%)
-	top 50%
-	left 50%
-	h2
-		color white
-		font-weight 500
-	p
-		font-weight 300
-		color white
-		font-size 1.2em
-		line-height 1.3em
-
-.website-visit
-	z-index 9999
-	padding-top 0px
-	min-width 300px
-	max-width 800px
-	display block
-	background rgba(0,0,0,0)
-	position absolute
-	transform translate(-50%,-50%)
-	top 5%
-	left 50%
-	h2
-		color white
-		font-weight 500
-	p
-		font-weight 100
-		color white
-		font-size 1.2em
-		line-height 1.3em
-		text-align center
-		
-.gotit
-	font-style italic
-	font-size 1.4em
-	color yellow
-	text-decoration none
-	border-bottom 2px solid yellow
-
-.links
-	color #f45
-	
-.website-links
-		color #DEDFE0
-		opacity 0.5
-
-
-
-
-
-</style>
-</head>
-<body>
+<script src="Java.js"><script>
 <div class="AR-tip">
 	<p>This is a AR-pen. Wait a moment to load and accept camera pop up. To see 3d models use <a style="white-space: nowrap" class="links" target="_blank" href="https://www.google.ru/search?q=hiro+marker&newwindow=1&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiV97CF6LnXAhUHpqQKHSfEBSAQ_AUICigB&biw=1676&bih=855&dpr=2">Hiro-marker</a></p>
 	<a class="gotit" href="#">Got it!</a>
 </div>
 
-
+<div class="website-visit">
+	<p><a class="website-links"  href="https://www.chrislewiscasey.com/about">To learn more about me visit:&nbsp; chrislewiscasey.com</a></p>
+</div>
 
 
 <div class="btns-wrap">
@@ -173,4 +48,3 @@ body
 	<a-entity camera></a-entity>
 	
 </a-scene>
-</body>
