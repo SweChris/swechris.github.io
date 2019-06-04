@@ -1,51 +1,43 @@
-<meta aframe-injected="" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=no,minimal-ui">
-<meta aframe-injected="" name="mobile-web-app-capable" content="yes">
+@@ -1,34 +1,9 @@
+<!-- include a-frame -->
+<script src="build/aframe.js"></script>
+<!-- include ar.js for aframe -->
+<script src='build/aframe-ar.js'></script>
+<script>ARjs.Context.baseURL = 'three.js/'</script>
+<!-- include aframe-portal-door -->
+<script src='demo-portal-door/src/aframe-portal-door.js'></script>
+<script src='demo-portal-door/src/threex-portal-door.js'></script>
 
+<!-- start the body of your page -->
+<body style='margin : 0px; overflow: hidden;'>
+	<!-- add some info at the top of the page -->
+	<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+		<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - Two-ways Portal 360 for a-frame by <a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
+	</div>
 
-<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
+	<!-- Define your 3d scene and enabled ar.js -->
+	<a-scene embedded arjs='trackingMethod: best;'>
+		<!-- Create a anchor to attach your augmented reality -->
+		<a-anchor hit-testing-enabled='true'>
 
+			<!-- portal 360 with an image -->
+			<a-portal-door url='https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg' position='0 0 0' scale='0.7 1 0.7' rotation='0 90 0'><a-portal-door>
 
-<div class="AR-tip">
-	<p>This is a AR-pen. Wait a moment to load and accept camera pop up. To see 3d models use <a style="white-space: nowrap" class="links" target="_blank" href="https://www.google.ru/search?q=hiro+marker&newwindow=1&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiV97CF6LnXAhUHpqQKHSfEBSAQ_AUICigB&biw=1676&bih=855&dpr=2">Hiro-marker</a></p>
-	<a class="gotit" href="#">Got it!</a>
-</div>
+			<!-- portal 360 with an video -->
+			<!-- <a-portal-door url='videos/pano.webm' position='0 0 0' scale='2 2 2' rotation='0 90 0'><a-portal-door> -->
+			<!-- <a-portal-door url='videos/aframe-city-360.mp4' position='0 0 0' scale='2 2 2' rotation='0 90 0'><a-portal-door> -->
 
-<div class="website-visit">
-	<p><a class="website-links"  href="https://www.chrislewiscasey.com/about">To learn more about me visit:&nbsp; chrislewiscasey.com</a></p>
-</div>
+		</a-anchor>
 
-
-<div class="btns-wrap">
-	<div class="btn rotate"></div>
-	<div class="btn scale"></div>
-	<div class="btn switch"onclick='window.location.href="https://www.chrislewiscasey.com"'>Website></div>
-</div>
-
-<a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' >
-	
-	<a-assets>
-		<a-asset-item id="london-obj" src="https://raw.githubusercontent.com/ChrisLCasey/AR-character-chill/master/Standing-chill.obj"></a-asset-item>
-		<a-asset-item id="london-mtl" src="https://raw.githubusercontent.com/ChrisLCasey/AR-character-chill/master/Standing-chill.mtl"></a-asset-item>
-	
-	</a-assets>
-
-	<a-marker type='pattern' patternUrl='https://www.chrislewiscasey.com/character-stance-code/pattern-marker.patt' id="aframe-scene">
-		
-		<a-entity light="type: hemisphere; color: #fefddd; groundColor: #fefddd; intensity: 1.2"></a-entity>
-		
-		<a-entity id="london" rotation="280 -90 90 -20" side="double" position="0.0 0.2 0.5" scale="0.009 0.009 0.009" obj-model="obj: #london-obj; mtl: #london-mtl">
-			<a-animation attribute="rotation" begin="rotate" end="endRotate" dur="20000" fill="forwards" to="-80 -90 90" repeat="indefinite" easing="linear">
-			</a-animation>
-		</a-entity>
-		
-		<a-entity id="kyiv" visible="false" rotation="0 -90 0" side="double" position="0.0 0.2 0" scale="0.01 0.01 0.01" obj-model="obj: #kyiv-obj; mtl: #kyiv-mtl">
-			<a-animation attribute="rotation" begin="rotate" end="endRotate" dur="26000" fill="forwards" to="0 270 0" repeat="indefinite" easing="linear">
-			</a-animation>
-		</a-entity>
-		
-	</a-marker>
-	
-	<a-entity camera></a-entity>
-	
-</a-scene>
+		<!-- Define a static camera -->
+		<a-camera-static/>
+	</a-scene>
+<html>
+<head>
+  <title>Babylon.js Viewer - Display a 3D model</title>
+  <script src="https://preview.babylonjs.com/viewer/babylon.viewer.js"></script> 
+</head>
+<body>
+    <babylon model="bouteille-evian-vide/source/Evian.glb" templates.main.params.fill-screen="true"></babylon>
+</body>
+</html>
