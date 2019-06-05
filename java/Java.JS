@@ -11,7 +11,7 @@ var londonModel = document.querySelector('#london'),
 
 gotitBtn.click(function(){
 	gotitBtn.parent().css({
-		display: "none"
+		display: "none";
 	});
 });
 
