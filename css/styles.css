@@ -78,6 +78,16 @@ body{
 	transform: translate(-50%,-50%);
 	top: 50%;
 	left: 50%;
+	h2{
+		color: white;
+		font-weight: 500;
+	}
+	p{
+		font-weight: 300;
+		color: white;
+		font-size: 1.2em;
+		line-height: 1.3em;
+	}
 }
 		
 .gotit{
