@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500,900')
 
-
-
-
+body{
+	margin: 0px;
+	overflow: hidden;
+	font-family: 'Roboto', sans-serif;
+}
 
 	
-.rotate
+.rotate{
 	background-color: #0078ff;
 	background-image: url(https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_3d_rotation_white_24px.svg);
 	background-size: 60%;
@@ -13,6 +16,7 @@
 	&_fade
 		opacity: 0.4;
 		background-color: #323965;
+}
 	
 .scale{
 	background-color: #39F3F6;
