@@ -6,6 +6,31 @@ body{
 	font-family: 'Roboto', sans-serif;
 }
 
+
+.btns-wrap{
+	font-family: 'Roboto', sans-serif;
+	bottom: 20px;
+	left: 20px;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	z-index: 9998;
+}
+	
+.btn{
+	user-select: none;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin: 18px;
+	border-radius: 1000px;
+	width: 60px;
+	height: 60px;
+	background: #f45;
+	display: inline-block;
+	text-align: center;
+	padding: 17px 20px;
+	transition: all 0.2s;
+}	
 	
 .rotate{
 	background-color: #0078ff;
